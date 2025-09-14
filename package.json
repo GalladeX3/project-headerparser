@@ -1,31 +1,19 @@
 {
-  "name": "request-header-parser-microservice",
+  "name": "request-header-parser-waldoxp",
   "version": "1.0.0",
-  "description": "API project - Request Header Parser Microservice (WaldoXP)",
+  "description": "FreeCodeCamp Request Header Parser Microservice (WaldoXP)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
+  "keywords": ["freecodecamp", "request-header-parser", "microservice", "api", "node", "express", "backend"],
+  "author": "WaldoXP <waldoxpofficial@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.18.1"
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/freeCodeCamp/boilerplate-project-headerparser.git"
-  },
-  "bugs": {
-    "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
-  },
-  "author": "WaldoXP",
-  "license": "MIT"
-  "keywords": [
-    "freeCodeCamp",
-    "node",
-    "express"
-  ],
-  "engines": {
-    "node": ">=18"
-  }
+  "engines": { "node": ">=18" },
+  "private": true
 }
