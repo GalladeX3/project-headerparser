@@ -1,30 +1,36 @@
-// index.js
+// Request Header Parser Microservice — WaldoXP
+// index.js — Request Header Parser Microservice (FCC)
 // where your node app starts
 
-// init project
 require('dotenv').config();
-var express = require('express');
-var app = express();
+const express = require('express');
+const cors = require('cors');
 
-// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC
-var cors = require('cors');
-app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
+const app = express();
 
-// http://expressjs.com/en/starter/static-files.html
+// enable CORS 
+app.use(cors({ optionsSuccessStatus: 200 }));
+
+// serve static files and landing page
 app.use(express.static('public'));
+app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+// IMPORTANT: trust proxy so req.ip reflects X-Forwarded-For on hosts like Railway
+app.set('trust proxy', true);
+
+// (optional) FCC sample endpoint
+app.get('/api/hello', (req, res) => res.json({ greeting: 'hello API' }));
+
+// REQUIRED endpoint for this project
+app.get('/api/whoami', (req, res) => {
+  const xff = req.headers['x-forwarded-for'];
+  const ip = xff ? String(xff).split(',')[0].trim()
+                 : (req.ip || req.socket?.remoteAddress || '');
+  const language = req.get('Accept-Language') || '';
+  const software = req.get('User-Agent') || '';
+  res.json({ ipaddress: ip, language, software });
 });
 
-// your first API endpoint...
-app.get('/api/hello', function (req, res) {
-  res.json({ greeting: 'hello API' });
-});
-
-// listen for requests :)
-var listener = app.listen(process.env.PORT || 3000, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+// listen for requests 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Request Header Parser running on ${PORT}`));
