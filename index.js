@@ -1,36 +1,38 @@
 // Request Header Parser Microservice — WaldoXP
-// index.js — Request Header Parser Microservice (FCC)
-// where your node app starts
+// index.js — FCC project
 
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
 
-// enable CORS 
+// Allow FCC tester to call the API
 app.use(cors({ optionsSuccessStatus: 200 }));
 
-// serve static files and landing page
+// Serve static files and landing page
 app.use(express.static('public'));
 app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 
-// IMPORTANT: trust proxy so req.ip reflects X-Forwarded-For on hosts like Railway
+// Trust proxy so req.ip reflects client IP on Railway/Render
 app.set('trust proxy', true);
 
-// (optional) FCC sample endpoint
+// (optional) sample endpoint from FCC
 app.get('/api/hello', (req, res) => res.json({ greeting: 'hello API' }));
 
-// REQUIRED endpoint for this project
+// REQUIRED endpoint
 app.get('/api/whoami', (req, res) => {
   const xff = req.headers['x-forwarded-for'];
   const ip = xff ? String(xff).split(',')[0].trim()
                  : (req.ip || req.socket?.remoteAddress || '');
   const language = req.get('Accept-Language') || '';
   const software = req.get('User-Agent') || '';
+
   res.json({ ipaddress: ip, language, software });
 });
 
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Request Header Parser running on ${PORT}`));
 // listen for requests 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Request Header Parser running on ${PORT}`));
