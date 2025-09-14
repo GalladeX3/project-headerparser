@@ -7,13 +7,22 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": ["freecodecamp", "request-header-parser", "microservice", "api", "node", "express", "backend"],
-  "author": "WaldoXP <waldoxpofficial@gmail.com>",
+  "keywords": [
+    "freecodecamp",
+    "request-header-parser",
+    "microservice",
+    "api",
+    "node",
+    "express",
+    "backend"
+  ],
+  "author": "WaldoXP",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2"
   },
-  "engines": { "node": ">=18" },
-  "private": true
+  "engines": {
+    "node": ">=18"
+  }
 }
