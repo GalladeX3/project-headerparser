@@ -14,7 +14,21 @@
     "cors": "^2.8.5",
     "express": "^4.21.2"
   },
-  "engines": { "node": ">=18" },
-  "private": true
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freeCodeCamp/boilerplate-project-headerparser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+  },
+  "author": "WaldoXP",
+  "license": "MIT"
+  "keywords": [
+    "freeCodeCamp",
+    "node",
+    "express"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
 }
-
