@@ -1,5 +1,4 @@
-// Request Header Parser Microservice — WaldoXP
-// index.js — FCC project
+// Request Header Parser Microservice - FCC project
 
 const express = require('express');
 const cors = require('cors');
@@ -16,7 +15,7 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 // Trust proxy so req.ip reflects client IP on Railway/Render
 app.set('trust proxy', true);
 
-// (optional) sample endpoint from FCC
+// (optional) FCC sample endpoint
 app.get('/api/hello', (req, res) => res.json({ greeting: 'hello API' }));
 
 // REQUIRED endpoint
@@ -31,8 +30,5 @@ app.get('/api/whoami', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Request Header Parser running on ${PORT}`));
-// listen for requests 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Request Header Parser running on ${PORT}`));
