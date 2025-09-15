@@ -1,3 +1,6 @@
-# Request Header Parser Microservice
+# Request Header Parser Microservice (WaldoXP)
 
-This is the boilerplate for the Request Header Parser Microservice project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/request-header-parser-microservice
+**Endpoint:** `GET /api/whoami` → returns:
+```json
+{ "ipaddress": "x.x.x.x", "language": "en-US,en;q=0.9", "software": "Google/5.0 ..." }
+
